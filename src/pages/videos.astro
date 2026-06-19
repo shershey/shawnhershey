@@ -4,6 +4,9 @@ import Video from '../components/Video.astro';
 import categories from '../data/videos.js';
 
 const sections = Object.entries(categories);
+const hasInstagram = sections.some(([, vids]) =>
+  vids.some((v) => /instagram\.com\/(reel|p|tv)\//i.test(v.url || ''))
+);
 ---
 <Layout title="Videos">
   <h1>Videos</h1>
@@ -33,6 +36,8 @@ const sections = Object.entries(categories);
       )}
     </section>
   ))}
+
+  {hasInstagram && <script async src="https://www.instagram.com/embed.js" is:inline></script>}
 
   <style>
     .category {

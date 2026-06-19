@@ -17,8 +17,8 @@ function resolve(v) {
   }
   const ig = full.match(/instagram\.com\/(reel|p|tv)\/([\w-]+)/i);
   if (ig) {
-    const src = `https://www.instagram.com/${ig[1]}/${ig[2]}/embed`;
-    return { ...v, kind: 'instagram', src };
+    const permalink = `https://www.instagram.com/${ig[1]}/${ig[2]}/`;
+    return { ...v, kind: 'instagram', permalink };
   }
   return { ...v, kind: 'link', href: full };
 }
@@ -39,17 +39,12 @@ const v = resolve(video);
     </div>
   )}
   {v.kind === 'instagram' && (
-    <div class="ig-embed">
-      <iframe
-        src={v.src}
-        title={v.title}
-        loading="lazy"
-        frameborder="0"
-        scrolling="no"
-        allowtransparency="true"
-        allowfullscreen
-      ></iframe>
-    </div>
+    <blockquote
+      class="instagram-media"
+      data-instgrm-permalink={v.permalink}
+      data-instgrm-version="14"
+      style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:540px; min-width:326px; padding:0; width:100%;"
+    ></blockquote>
   )}
   <p class="caption">
     {v.kind === 'link'
@@ -75,15 +70,8 @@ const v = resolve(video);
     height: 100%;
     border: 0;
   }
-  .ig-embed {
-    max-width: 340px;
-  }
-  .ig-embed iframe {
-    width: 100%;
-    height: 540px;
-    border: 0;
-    background: #fff;
-    border-radius: 4px;
+  .instagram-media {
+    margin: 0 auto !important;
   }
   .caption {
     margin-top: 0.5rem;
