@@ -1,7 +1,86 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// Balboa videos from the source doc. type: 'youtube' embeds; 'link' links out; 'none' has no video yet.
+const videos = [
+  { title: '1st place — All Balboa Weekend 2017 Amateur, with Yurina Shin', type: 'youtube', id: 'BXnWJzEFc8o', start: 841 },
+  { title: '1st place — Bal Love Strictly with Theresa, 2019', type: 'youtube', id: 'IhKzMboc30k', start: 224 },
+  { title: '1st place — Snowball Mix & Match with Amy, 2019', type: 'youtube', id: 'dtdhfAXKA9M', start: 294 },
+  { title: '3rd — Slow Bal, Great Lakes 2019', type: 'youtube', id: '3JzPJ_OsZOQ', start: 215 },
+  { title: '3rd place — Cal Bal 2023', type: 'youtube', id: '4etcIvxKANk' },
+  { title: '2nd — Slow Bal, Bal Week 2024', type: 'youtube', id: 'Qr31lBboN6w' },
+  { title: '1st place — Slow Bal, Bal Week 2025', type: 'link', url: 'https://www.facebook.com/share/v/1XZLihCLjF/' },
+  { title: '1st place — Slow Bal at Stardust 2025', type: 'youtube', id: 'Mvht_KYqRD4' },
+  { title: 'Pure Bal finals — Great Lakes 2025', type: 'youtube', id: 'O4qUkmsAKmg' },
+  { title: 'Strictly finals — Snowball 2025', type: 'none', note: 'on Instagram' },
+  { title: '1st place — Open Mix & Match, Cal Bal 2026', type: 'youtube', id: 'ouRiBgvzBeI' },
+  { title: 'Pure Bal finals — Cal Bal 2026', type: 'none', note: 'on Instagram' },
+  { title: 'Bal Week 2026 Rendezvous finals', type: 'none' },
+  { title: 'Bal Week 2026 Mix & Match finals', type: 'none' },
+  { title: '1st place — Slow Bal, Bal Week 2026', type: 'none' },
+];
+
+const embedSrc = (v) =>
+  `https://www.youtube.com/embed/${v.id}${v.start ? `?start=${v.start}` : ''}`;
 ---
 <Layout title="Videos">
   <h1>Videos</h1>
-  <p>Coming soon.</p>
+  <p>A selection of Balboa performances and competitions.</p>
+
+  <div class="video-grid">
+    {videos.map((v) => (
+      <div class="video-item">
+        {v.type === 'youtube' && (
+          <div class="embed">
+            <iframe
+              src={embedSrc(v)}
+              title={v.title}
+              loading="lazy"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        )}
+        <p class="caption">
+          {v.type === 'link'
+            ? <a href={v.url} target="_blank" rel="noopener">{v.title} →</a>
+            : <span>{v.title}</span>}
+          {v.type === 'none' && <span class="soon"> {v.note ? `(${v.note})` : '(coming soon)'}</span>}
+        </p>
+      </div>
+    ))}
+  </div>
+
+  <style>
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.75rem;
+      margin-top: 1.5rem;
+    }
+    .embed {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #1e1a16;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .caption {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+    .caption .soon {
+      color: #8a7a66;
+      font-style: italic;
+    }
+  </style>
 </Layout>
