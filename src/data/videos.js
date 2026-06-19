@@ -16,16 +16,16 @@
 
 export default {
   'Pure Balboa': [
+    { title: 'Pure Bal finals — Cal Bal 2026',            url: 'https://www.instagram.com/reel/DUlajakgWSl/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', note: 'on Instagram' },
     { title: 'Pure Bal finals — Great Lakes 2025',        url: 'https://www.youtube.com/watch?v=O4qUkmsAKmg' },
-    { title: 'Pure Bal finals — Cal Bal 2026',            url: '', note: 'on Instagram' },
   ],
 
   'Balboa': [
+    { title: '1st place — Open Mix & Match, Cal Bal 2026',                    url: 'https://www.youtube.com/watch?v=ouRiBgvzBeI' },
+    { title: '3rd place — Cal Bal 2023',                                     url: 'https://www.youtube.com/watch?v=4etcIvxKANk' },
     { title: '1st place — All Balboa Weekend 2017 Amateur, with Yurina Shin', url: 'https://youtu.be/BXnWJzEFc8o?t=841' },
     { title: '1st place — Snowball Mix & Match with Amy, 2019',               url: 'https://youtu.be/dtdhfAXKA9M?t=294' },
-    { title: '1st place — Open Mix & Match, Cal Bal 2026',                    url: 'https://www.youtube.com/watch?v=ouRiBgvzBeI' },
     { title: '1st place — Bal Love Strictly with Theresa, 2019',             url: 'https://youtu.be/IhKzMboc30k?t=224' },
-    { title: '3rd place — Cal Bal 2023',                                     url: 'https://www.youtube.com/watch?v=4etcIvxKANk' },
     { title: 'Strictly finals — Snowball 2025',                             url: '', note: 'on Instagram' },
     { title: 'Bal Week 2026 Rendezvous finals',                            url: '' },
     { title: 'Bal Week 2026 Mix & Match finals',                           url: '' },
