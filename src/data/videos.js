@@ -40,6 +40,6 @@ export default {
 
   'Blues': [
     // Add blues videos here, e.g.:
-    // { title: 'Some blues comp 2024', url: 'https://youtu.be/...' },
+    { title: '1st place - Snowball Invitational Blues 2026', url: 'https://www.instagram.com/reel/DTyU8GdCLgu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==' },
   ],
 };
