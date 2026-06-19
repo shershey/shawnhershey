@@ -15,10 +15,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 
 export default {
-  'Pure Balboa': [
-    { title: 'Pure Bal finals — Cal Bal 2026',            url: 'https://www.instagram.com/reel/DUlajakgWSl/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', note: 'on Instagram' },
-    { title: 'Pure Bal finals — Great Lakes 2025',        url: 'https://www.youtube.com/watch?v=O4qUkmsAKmg' },
-  ],
 
   'Balboa': [
     { title: '1st place — Open Mix & Match, Cal Bal 2026',                    url: 'https://www.youtube.com/watch?v=ouRiBgvzBeI' },
@@ -43,4 +39,9 @@ export default {
     // Add blues videos here, e.g.:
     { title: '1st place - Snowball Invitational Blues 2026', url: 'https://www.instagram.com/reel/DTyU8GdCLgu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==' },
   ],
+    'Pure Balboa': [
+    { title: 'Pure Bal finals — Cal Bal 2026',            url: 'https://www.instagram.com/reel/DUlajakgWSl/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', note: 'on Instagram' },
+    { title: 'Pure Bal finals — Great Lakes 2025',        url: 'https://www.youtube.com/watch?v=O4qUkmsAKmg' },
+  ],
+
 };
