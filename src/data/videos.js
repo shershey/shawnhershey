@@ -6,8 +6,9 @@
 //     the rest appear under "Show more". To feature a different video,
 //     move it to the top of its category.
 //   • To ADD a video: copy a line, paste a title and the video link.
-//     Paste the normal YouTube or Facebook link — the page works out the
-//     rest (including a start time like ...?t=841 if the link has one).
+//     YouTube and Instagram links embed and play inline (YouTube start
+//     times like ...?t=841 are kept). Other links (e.g. Facebook) show as
+//     a clickable link instead. Instagram only embeds for public accounts.
 //   • For a video that isn't posted yet, leave the link empty ('') and
 //     optionally add a note. An empty category shows "coming soon".
 //   • To reorder the CATEGORIES, reorder the blocks below.
