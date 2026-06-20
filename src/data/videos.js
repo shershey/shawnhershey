@@ -18,13 +18,13 @@ export default {
 
   'Balboa': [
     { title: '1st place — Open Mix & Match, Cal Bal 2026',                    url: 'https://www.youtube.com/watch?v=ouRiBgvzBeI' },
+    { title: 'Bal Week 2026 Rendezvous finals',                            url: 'https://www.instagram.com/reel/DZybxzMxX-j/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==' },
     { title: '3rd place — Cal Bal 2023',                                     url: 'https://www.youtube.com/watch?v=4etcIvxKANk' },
-    { title: '1st place — All Balboa Weekend 2017 Amateur, with Yurina Shin', url: 'https://youtu.be/BXnWJzEFc8o?t=841' },
-    { title: '1st place — Snowball Mix & Match with Amy, 2019',               url: 'https://youtu.be/dtdhfAXKA9M?t=294' },
     { title: '1st place — Bal Love Strictly with Theresa, 2019',             url: 'https://youtu.be/IhKzMboc30k?t=224' },
     { title: 'Strictly finals — Snowball 2025',                             url: '', note: 'on Instagram' },
-    { title: 'Bal Week 2026 Rendezvous finals',                            url: '' },
-    { title: 'Bal Week 2026 Mix & Match finals',                           url: '' },
+    { title: '1st place — All Balboa Weekend 2017 Amateur, with Yurina Shin', url: 'https://youtu.be/BXnWJzEFc8o?t=841' },
+    { title: '1st place — Snowball Mix & Match with Amy, 2019',               url: 'https://youtu.be/dtdhfAXKA9M?t=294' },
+    // { title: 'Bal Week 2026 Mix & Match finals',                           url: '' },
   ],
 
   'Slow Balboa': [
@@ -32,9 +32,9 @@ export default {
     { title: '1st place — Slow Bal, Bal Week 2026 - song 1',       url: 'https://www.youtube.com/watch?v=tuUFxIFIg7Y' },
     { title: '1st place — Slow Bal, Bal Week 2026 - song 2',       url: 'https://www.youtube.com/watch?v=H0UV52IkrZk' },
     { title: '1st place — Slow Bal, Bal Week 2026 - song 3',       url: 'https://www.youtube.com/watch?v=IUP7OFAv4xk' },
+    { title: '1st place — Slow Bal, Bal Week 2025',       url: 'https://www.instagram.com/reel/DKX9TfERLvm/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==' },
     { title: '2nd — Slow Bal, Bal Week 2024',             url: 'https://www.youtube.com/watch?v=Qr31lBboN6w' },
     { title: '3rd — Slow Bal, Great Lakes 2019',          url: 'https://youtu.be/3JzPJ_OsZOQ?t=215' },
-    { title: '1st place — Slow Bal, Bal Week 2025',       url: 'https://www.facebook.com/share/v/1XZLihCLjF/' },
   ],
 
   'Blues': [
