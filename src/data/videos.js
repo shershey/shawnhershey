@@ -28,16 +28,19 @@ export default {
   ],
 
   'Slow Balboa': [
-    { title: '1st place — Slow Bal at Stardust 2025',     url: 'https://www.youtube.com/watch?v=Mvht_KYqRD4' },
+    { title: '1st place — Slow Bal at Stardust 2025',     url: 'https://youtu.be/Mvht_KYqRD4?si=5CvJVApq5tfGwlO9&t=409' },
+    { title: '1st place — Slow Bal, Bal Week 2026 - song 1',       url: 'https://www.youtube.com/watch?v=tuUFxIFIg7Y' },
+    { title: '1st place — Slow Bal, Bal Week 2026 - song 2',       url: 'https://www.youtube.com/watch?v=H0UV52IkrZk' },
+    { title: '1st place — Slow Bal, Bal Week 2026 - song 3',       url: 'https://www.youtube.com/watch?v=IUP7OFAv4xk' },
     { title: '2nd — Slow Bal, Bal Week 2024',             url: 'https://www.youtube.com/watch?v=Qr31lBboN6w' },
     { title: '3rd — Slow Bal, Great Lakes 2019',          url: 'https://youtu.be/3JzPJ_OsZOQ?t=215' },
     { title: '1st place — Slow Bal, Bal Week 2025',       url: 'https://www.facebook.com/share/v/1XZLihCLjF/' },
-    { title: '1st place — Slow Bal, Bal Week 2026',       url: '' },
   ],
 
   'Blues': [
     // Add blues videos here, e.g.:
     { title: '1st place - Snowball Invitational Blues 2026', url: 'https://www.instagram.com/reel/DTyU8GdCLgu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==' },
+    { title: 'Korea Blues Camp 2024 Instructor Improvised Demo', url: 'https://www.youtube.com/watch?v=WYj4hOwuY6g' },
   ],
     'Pure Balboa': [
     { title: 'Pure Bal finals — Cal Bal 2026',            url: 'https://www.instagram.com/reel/DUlajakgWSl/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', note: 'on Instagram' },
