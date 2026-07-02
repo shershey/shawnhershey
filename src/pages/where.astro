@@ -53,10 +53,14 @@ const SHEET_CSV =
       width: 0.8rem;
       height: 0.8rem;
       background: #f7f2ea;
+      border: 1px solid #ddc9a0; /* outline so the arc reads on the cream cards too */
       border-radius: 50%;
     }
     .wsx .ticket::before { top: -0.42rem; }
     .wsx .ticket::after { bottom: -0.42rem; }
+    /* on the dark hero, match its own border so the outline stays subtle */
+    .wsx .ticket.is-now::before,
+    .wsx .ticket.is-now::after { border-color: #3a332a; }
 
     .wsx .t-main { flex: 1; padding: 1.05rem 1.2rem; min-width: 0; }
     .wsx .t-label {
