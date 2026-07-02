@@ -1,0 +1,273 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Source of truth: a public Google Sheet (Date, Where, Country, Event, Link, Role),
+// read client-side as CSV so edits appear without a redeploy. The gviz endpoint
+// sends CORS headers for shawnhershey.com, so the browser fetch is allowed.
+// Each row is a stop; a stop lasts until the next stop begins.
+const SHEET_CSV =
+  'https://docs.google.com/spreadsheets/d/1iRDSvRgPMfb8VcUfiapouIB95vp_wTh_4CVcefmtRLI/gviz/tq?tqx=out:csv&gid=0';
+---
+
+<Layout title="Where's Shawn?">
+  <h1>Where's Shawn?</h1>
+  <div class="wsx">
+    <p class="intro">
+      Where I'm dancing, teaching, performing, and traveling.
+    </p>
+
+    <div id="now"></div>
+    <div id="schedule"><p class="muted">Loading the schedule…</p></div>
+  </div>
+
+  {/* Global (unscoped) so it also styles the tickets injected at runtime by the
+      script below; namespaced under .wsx so nothing leaks to other pages. */}
+  <style is:global>
+    .wsx .intro { color: #5a4a36; max-width: 34rem; }
+    .wsx .muted { color: #8a7a66; }
+    .wsx #schedule h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.35rem;
+      color: #5a3e1b;
+      margin: 0.5rem 0 1rem;
+    }
+
+    /* ── Ticket ─────────────────────────────────────────── */
+    .wsx .ticket {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      background: #fbf6ea;
+      border: 1px solid #ddc9a0;
+      border-radius: 10px;
+      margin-bottom: 1.15rem;
+      box-shadow: 0 3px 10px rgba(30, 26, 22, 0.07);
+      overflow: hidden;
+    }
+    /* punched notches where the stub perforation meets the edges */
+    .wsx .ticket::before,
+    .wsx .ticket::after {
+      content: '';
+      position: absolute;
+      right: 4.6rem;
+      width: 0.8rem;
+      height: 0.8rem;
+      background: #f7f2ea;
+      border-radius: 50%;
+    }
+    .wsx .ticket::before { top: -0.42rem; }
+    .wsx .ticket::after { bottom: -0.42rem; }
+
+    .wsx .t-main { flex: 1; padding: 1.05rem 1.2rem; min-width: 0; }
+    .wsx .t-label {
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #b98f4e;
+      margin-bottom: 0.2rem;
+    }
+    .wsx .t-city {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem;
+      line-height: 1.12;
+      color: #1e1a16;
+    }
+    .wsx .t-city .t-country {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.85rem;
+      color: #8a7a66;
+      white-space: nowrap;
+    }
+    .wsx .t-event { color: #3f382e; margin-top: 0.35rem; }
+    .wsx .t-event a { color: #7a4f1e; }
+    .wsx .t-range {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #9c8865;
+      letter-spacing: 0.02em;
+    }
+
+    .wsx .role {
+      display: inline-block;
+      margin-left: 0.5rem;
+      font-size: 0.64rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #5a3e1b;
+      background: #eaddc0;
+      border-radius: 999px;
+      padding: 0.12rem 0.6rem;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    /* perforated date-tab stub */
+    .wsx .t-stub {
+      width: 5rem;
+      flex-shrink: 0;
+      border-left: 2px dashed #cdb789;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      text-align: center;
+      color: #7a4f1e;
+    }
+    .wsx .s-mon { font-size: 0.72rem; letter-spacing: 0.12em; }
+    .wsx .s-day { font-family: 'Playfair Display', Georgia, serif; font-size: 1.75rem; line-height: 1; }
+    .wsx .s-yr { font-size: 0.68rem; color: #a08a6a; margin-top: 0.2rem; }
+
+    /* ── Right-now hero ticket (first class) ────────────── */
+    .wsx .ticket.is-now {
+      background: #1e1a16;
+      border-color: #1e1a16;
+      box-shadow: 0 12px 30px rgba(30, 26, 22, 0.18);
+      margin-bottom: 2.4rem;
+    }
+    .wsx .ticket.is-now .t-label { color: #e8c97e; }
+    .wsx .ticket.is-now .t-city { color: #f7f2ea; font-size: 1.85rem; }
+    .wsx .ticket.is-now .t-city .t-country { color: #cdbfa8; }
+    .wsx .ticket.is-now .t-event { color: #e7dcc8; }
+    .wsx .ticket.is-now .t-event a { color: #e8c97e; }
+    .wsx .ticket.is-now .t-range { color: #b0a088; }
+    .wsx .ticket.is-now .t-stub { border-left-color: #5a4a30; color: #e8c97e; }
+    .wsx .ticket.is-now .s-yr { color: #a89a80; }
+    .wsx .ticket.is-now .role { background: #4a3a20; color: #e8c97e; }
+
+    .wsx details.past { margin-top: 2.5rem; }
+    .wsx details.past summary {
+      cursor: pointer;
+      color: #7a4f1e;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .wsx details.past .ticket { opacity: 0.72; box-shadow: none; }
+  </style>
+
+  <script define:vars={{ SHEET_CSV }}>
+    // Minimal CSV parser handling quoted fields (commas & escaped quotes inside).
+    function parseCSV(text) {
+      const rows = [];
+      let row = [], field = '', inQ = false;
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        if (inQ) {
+          if (c === '"') { if (text[i + 1] === '"') { field += '"'; i++; } else inQ = false; }
+          else field += c;
+        } else if (c === '"') inQ = true;
+        else if (c === ',') { row.push(field); field = ''; }
+        else if (c === '\n' || c === '\r') {
+          if (c === '\r' && text[i + 1] === '\n') i++;
+          row.push(field); rows.push(row); row = []; field = '';
+        } else field += c;
+      }
+      if (field.length || row.length) { row.push(field); rows.push(row); }
+      return rows;
+    }
+
+    // Parse "M/D/YYYY" or "M/D" (infer the nearest year for the year-less ones).
+    function parseDate(s) {
+      const m = (s || '').trim().match(/^(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?/);
+      if (!m) return null;
+      const mo = +m[1], d = +m[2];
+      const now = new Date();
+      let year = m[3] ? (+m[3] < 100 ? 2000 + +m[3] : +m[3]) : null;
+      if (year === null) {
+        let best = null;
+        for (const yr of [now.getFullYear() - 1, now.getFullYear(), now.getFullYear() + 1]) {
+          const dt = new Date(yr, mo - 1, d);
+          const diff = Math.abs(dt - now);
+          if (!best || diff < best.diff) best = { dt, diff };
+        }
+        return best.dt;
+      }
+      return new Date(year, mo - 1, d);
+    }
+
+    const esc = (s) =>
+      (s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const href = (l) => (/^https?:\/\//i.test(l) ? l : 'https://' + l);
+    const mdy = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+    // "Jul 17 – 26, 2026" / "Jul 26 – Aug 1, 2026" / cross-year shows both years.
+    function fmtRange(start, end) {
+      const md = { month: 'short', day: 'numeric' };
+      if (!end) return `From ${mdy(start)}`;
+      if (start.getFullYear() !== end.getFullYear()) return `${mdy(start)} – ${mdy(end)}`;
+      const s = start.toLocaleDateString('en-US', md);
+      const e = start.getMonth() === end.getMonth() ? String(end.getDate()) : end.toLocaleDateString('en-US', md);
+      return `${s} – ${e}, ${end.getFullYear()}`;
+    }
+
+    function dateTab(d) {
+      return `<div class="t-stub">
+        <span class="s-mon">${d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()}</span>
+        <span class="s-day">${d.getDate()}</span>
+        <span class="s-yr">${d.getFullYear()}</span>
+      </div>`;
+    }
+
+    function ticketHTML(r, hero) {
+      const country = r.country && r.country !== r.where ? ` <span class="t-country">· ${esc(r.country)}</span>` : '';
+      const role = r.role ? `<span class="role">${esc(r.role)}</span>` : '';
+      let event = esc(r.event);
+      if (r.link) event = `<a href="${esc(href(r.link))}" target="_blank" rel="noopener">${event || 'Details'}</a>`;
+      const range = hero ? (r.end ? `Here through ${mdy(r.end)}` : 'Here now') : fmtRange(r.date, r.end);
+      return `
+        <article class="ticket${hero ? ' is-now' : ''}">
+          <div class="t-main">
+            ${hero ? '<div class="t-label">Right now</div>' : ''}
+            <div class="t-city">${esc(r.where)}${country}</div>
+            ${event || role ? `<div class="t-event">${event}${role}</div>` : ''}
+            <div class="t-range">${range}</div>
+          </div>
+          ${dateTab(r.date)}
+        </article>`;
+    }
+
+    fetch(SHEET_CSV)
+      .then((r) => r.text())
+      .then((csv) => {
+        const rows = parseCSV(csv);
+        const head = rows.shift().map((h) => h.trim().toLowerCase());
+        const idx = (n) => head.indexOf(n);
+        const items = rows
+          .map((r) => ({
+            date: parseDate(r[idx('date')]),
+            where: (r[idx('where')] || '').trim(),
+            country: (r[idx('country')] || '').trim(),
+            event: (r[idx('event')] || '').trim(),
+            link: (r[idx('link')] || '').trim(),
+            role: (r[idx('role')] || '').trim(),
+          }))
+          .filter((r) => r.date && r.where)
+          .sort((a, b) => a.date - b.date);
+
+        // A stop ends when the next one begins.
+        items.forEach((r, i) => (r.end = items[i + 1] ? items[i + 1].date : null));
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const upcoming = items.filter((r) => r.date > today);
+        const started = items.filter((r) => r.date <= today);
+        const current = started.length ? started[started.length - 1] : null;
+        const past = started.slice(0, -1);
+
+        if (current) document.getElementById('now').innerHTML = ticketHTML(current, true);
+
+        document.getElementById('schedule').innerHTML =
+          (upcoming.length
+            ? `<h2>Coming up</h2>${upcoming.map((r) => ticketHTML(r)).join('')}`
+            : `<p class="muted">No upcoming trips posted yet — check back soon.</p>`) +
+          (past.length
+            ? `<details class="past"><summary>Past stops</summary>${past.slice().reverse().map((r) => ticketHTML(r)).join('')}</details>`
+            : '');
+      })
+      .catch(() => {
+        document.getElementById('schedule').innerHTML =
+          '<p class="muted">Couldn’t load the schedule right now. Please try again later.</p>';
+      });
+  </script>
+</Layout>
