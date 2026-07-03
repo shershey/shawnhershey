@@ -239,7 +239,7 @@ const SHEET_CSV =
             ${event || role ? `<div class="t-event">${event}${role}</div>` : ''}
             <div class="t-range">${range}</div>
           </div>
-          ${dateTab(r.date)}
+          ${dateTab(hero ? new Date() : r.date)}
         </article>`;
     }
 
