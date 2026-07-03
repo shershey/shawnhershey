@@ -86,6 +86,12 @@ const SHEET_CSV =
       color: #8a7a66;
       white-space: nowrap;
     }
+    .wsx .t-city a.t-map {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted currentColor;
+    }
+    .wsx .t-city a.t-map:hover { border-bottom-style: solid; }
     .wsx .t-event { color: #3f382e; margin-top: 0.35rem; }
     .wsx .t-event a { color: #7a4f1e; }
     .wsx .t-range {
@@ -223,11 +229,13 @@ const SHEET_CSV =
       let event = esc(r.event);
       if (r.link) event = `<a href="${esc(href(r.link))}" target="_blank" rel="noopener">${event || 'Details'}</a>`;
       const range = hero ? (r.end ? `Here through ${mdy(r.end)}` : 'Here now') : fmtRange(r.date, r.end);
+      const mapsQ = encodeURIComponent([r.where, r.country].filter(Boolean).join(' '));
+      const cityLink = `<a class="t-map" href="https://www.google.com/maps/search/?api=1&query=${mapsQ}" target="_blank" rel="noopener">${esc(r.where)}</a>`;
       return `
         <article class="ticket${hero ? ' is-now' : ''}">
           <div class="t-main">
             ${hero ? '<div class="t-label">Right now</div>' : ''}
-            <div class="t-city">${esc(r.where)}${country}</div>
+            <div class="t-city">${cityLink}${country}</div>
             ${event || role ? `<div class="t-event">${event}${role}</div>` : ''}
             <div class="t-range">${range}</div>
           </div>
