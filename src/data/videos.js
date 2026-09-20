@@ -22,7 +22,7 @@ export default {
     { title: 'Bal Week 2026 Rendezvous finals',                            url: 'https://www.instagram.com/reel/DZybxzMxX-j/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==' },
     { title: '3rd place — Cal Bal 2023',                                     url: 'https://www.youtube.com/watch?v=4etcIvxKANk' },
     { title: '1st place — Bal Love Strictly with Theresa, 2019',             url: 'https://youtu.be/IhKzMboc30k?t=224' },
-    { title: 'Social Dance Demo at Camp California Weekend in Beijing 2026',  url: 'https://www.instagram.com/reel/C9clmiMOIi_/' },
+    { title: 'Social Dance Demo at Camp California Weekend in Beijing 2026',  url: 'https://www.instagram.com/reel/DdY0l8NxZnJ/' },
     { title: 'Strictly finals — Snowball 2025',                             url: '', note: 'on Instagram' },
     { title: '1st place — All Balboa Weekend 2017 Amateur, with Yurina Shin', url: 'https://youtu.be/BXnWJzEFc8o?t=841' },
     { title: '1st place — Snowball Mix & Match with Amy, 2019',               url: 'https://youtu.be/dtdhfAXKA9M?t=294' },
@@ -43,7 +43,7 @@ export default {
     // Add blues videos here, e.g.:
     { title: '1st place - Snowball Invitational Blues 2026', url: 'https://www.instagram.com/reel/DTyU8GdCLgu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==' },
     { title: 'Korea Blues Camp 2024 Instructor Improvised Demo', url: 'https://www.youtube.com/watch?v=WYj4hOwuY6g' },
-    { title: '1st place — Slow Dance Soiree 2024', url: 'https://www.instagram.com/reel/DdY0l8NxZnJ/' },
+    { title: '1st place — Slow Dance Soiree 2024', url: 'https://www.instagram.com/reel/C9clmiMOIi_/' },
     { title: 'Julie Brown & Shawn Hershey at bluesSHOUT! 2016', url: 'https://www.youtube.com/watch?v=81OkjpB2cHo' },
     { title: 'Julie Brown & Shawn Hershey demo at Rose City Blues 2015', url: 'https://www.youtube.com/watch?v=rGN16XsA2-E' },
     { title: 'bluesSHOUT! 2017 All Stars Strictly finals', url: 'https://youtu.be/xiNQjgeePU0?t=430' },
