@@ -4,9 +4,6 @@ import Video from '../components/Video.astro';
 import categories from '../data/videos.js';
 
 const sections = Object.entries(categories);
-const hasInstagram = sections.some(([, vids]) =>
-  vids.some((v) => /instagram\.com\/(reel|p|tv)\//i.test(v.url || ''))
-);
 ---
 <Layout title="Videos">
   <h1>Videos</h1>
@@ -19,55 +16,110 @@ const hasInstagram = sections.some(([, vids]) =>
       {videos.length === 0 ? (
         <p class="soon">Videos coming soon.</p>
       ) : (
-        <>
-          <div class="featured">
-            <Video video={videos[0]} />
-          </div>
-
-          {videos.length > 1 && (
-            <details>
-              <summary>Show {videos.length - 1} more</summary>
-              <div class="video-grid">
-                {videos.slice(1).map((v) => <Video video={v} />)}
-              </div>
-            </details>
-          )}
-        </>
+        <div class="video-grid">
+          {videos.map((v) => <Video video={v} />)}
+        </div>
       )}
     </section>
   ))}
 
-  {hasInstagram && <script async src="https://www.instagram.com/embed.js" is:inline></script>}
+  <div id="lightbox" class="lightbox" hidden>
+    <button class="lb-close" type="button" aria-label="Close video">&times;</button>
+    <div class="lb-frame"><div class="lb-embed" id="lb-embed"></div></div>
+  </div>
 
   <style>
     .category {
-      margin-bottom: 2.5rem;
-    }
-    .featured {
-      max-width: 32rem;
+      margin-bottom: 2.75rem;
     }
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem 1.25rem;
       margin-top: 1.25rem;
-    }
-    details {
-      margin-top: 1rem;
-    }
-    summary {
-      cursor: pointer;
-      color: #7a4f1e;
-      font-size: 0.95rem;
-      letter-spacing: 0.02em;
-      width: fit-content;
-    }
-    summary:hover {
-      color: #5a3e1b;
     }
     .soon {
       color: #8a7a66;
       font-style: italic;
     }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(20, 16, 12, 0.9);
+      display: grid;
+      place-items: center;
+      padding: 1.25rem;
+    }
+    .lightbox[hidden] { display: none; }
+    .lb-frame {
+      position: relative;
+      width: min(960px, 100%);
+      aspect-ratio: 16 / 9;
+    }
+    .lb-embed,
+    .lb-embed :global(iframe) {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 6px;
+    }
+    .lb-close {
+      position: absolute;
+      top: 0.75rem;
+      right: 1rem;
+      background: none;
+      border: 0;
+      color: #f7f2ea;
+      font-size: 2.4rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+    }
+    .lb-close:hover { color: #e8c97e; }
   </style>
+
+  <script is:inline>
+    (function () {
+      var lb = document.getElementById('lightbox');
+      var embed = document.getElementById('lb-embed');
+      if (!lb || !embed) return;
+
+      function openVideo(id, start) {
+        var src = 'https://www.youtube.com/embed/' + id +
+          '?autoplay=1&rel=0' + (start ? '&start=' + start : '');
+        embed.innerHTML = '<iframe src="' + src + '" title="Video" ' +
+          'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ' +
+          'allowfullscreen></iframe>';
+        lb.hidden = false;
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeVideo() {
+        lb.hidden = true;
+        embed.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+
+      document.addEventListener('click', function (e) {
+        var tile = e.target.closest('.tile.yt');
+        if (tile) {
+          e.preventDefault();
+          openVideo(tile.getAttribute('data-yt'), tile.getAttribute('data-start'));
+          return;
+        }
+        if (e.target === lb || e.target.closest('.lb-close')) {
+          closeVideo();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !lb.hidden) closeVideo();
+      });
+    })();
+  </script>
 </Layout>
