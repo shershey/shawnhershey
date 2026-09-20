@@ -23,7 +23,7 @@ export default {
     { title: '3rd place — Cal Bal 2023',                                     url: 'https://www.youtube.com/watch?v=4etcIvxKANk' },
     { title: '1st place — Bal Love Strictly with Theresa, 2019',             url: 'https://youtu.be/IhKzMboc30k?t=224' },
     { title: 'Social Dance Demo at Camp California Weekend in Beijing 2026',  url: 'https://www.instagram.com/reel/DdY0l8NxZnJ/' },
-    { title: 'Strictly finals — Snowball 2025',                             url: '', note: 'on Instagram' },
+    { title: 'Strictly finals — Snowball 2025',                             url: 'https://www.instagram.com/reel/DS5TteeDI_6/' },
     { title: '1st place — All Balboa Weekend 2017 Amateur, with Yurina Shin', url: 'https://youtu.be/BXnWJzEFc8o?t=841' },
     { title: '1st place — Snowball Mix & Match with Amy, 2019',               url: 'https://youtu.be/dtdhfAXKA9M?t=294' },
     // { title: 'Bal Week 2026 Mix & Match finals',                           url: '' },
