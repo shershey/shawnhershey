@@ -2,8 +2,11 @@
 const { video } = Astro.props;
 
 // Work out how to show a video from its link.
-// YouTube links become embedded players; anything else becomes a link;
-// an empty link shows as "coming soon".
+// Every video renders as a uniform 16:9 tile with a play button.
+//   • YouTube  → real thumbnail; click opens an in-page player (lightbox).
+//   • Instagram → styled placeholder tile; click opens the reel on Instagram.
+//   • Other links (e.g. Facebook) → placeholder tile that opens the link.
+//   • Empty link → "coming soon" tile.
 function resolve(v) {
   const url = (v.url || '').trim();
   if (!url) return { ...v, kind: 'none' };
@@ -12,13 +15,11 @@ function resolve(v) {
   const yt = full.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]+)/i);
   if (yt) {
     const t = full.match(/[?&](?:t|start)=(\d+)/);
-    const src = `https://www.youtube.com/embed/${yt[1]}${t ? `?start=${t[1]}` : ''}`;
-    return { ...v, kind: 'youtube', src };
+    return { ...v, kind: 'youtube', id: yt[1], start: t ? t[1] : '' };
   }
   const ig = full.match(/instagram\.com\/(reel|p|tv)\/([\w-]+)/i);
   if (ig) {
-    const permalink = `https://www.instagram.com/${ig[1]}/${ig[2]}/`;
-    return { ...v, kind: 'instagram', permalink };
+    return { ...v, kind: 'instagram', permalink: `https://www.instagram.com/${ig[1]}/${ig[2]}/` };
   }
   return { ...v, kind: 'link', href: full };
 }
@@ -27,57 +28,175 @@ const v = resolve(video);
 ---
 <div class="video-item">
   {v.kind === 'youtube' && (
-    <div class="embed">
-      <iframe
-        src={v.src}
-        title={v.title}
+    <button
+      class="tile yt"
+      type="button"
+      data-yt={v.id}
+      data-start={v.start}
+      aria-label={`Play: ${v.title}`}
+    >
+      <img
+        class="thumb"
+        src={`https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`}
+        onerror={`this.onerror=null;this.src='https://i.ytimg.com/vi/${v.id}/hqdefault.jpg'`}
+        alt=""
         loading="lazy"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-    </div>
+      />
+      <span class="play" aria-hidden="true"></span>
+    </button>
   )}
+
   {v.kind === 'instagram' && (
-    <blockquote
-      class="instagram-media"
-      data-instgrm-permalink={v.permalink}
-      data-instgrm-version="14"
-      style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:540px; min-width:326px; padding:0; width:100%;"
-    ></blockquote>
+    <a class="tile ig" href={v.permalink} target="_blank" rel="noopener" aria-label={`Watch on Instagram: ${v.title}`}>
+      <span class="face">
+        <svg class="ig-glyph" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5.5" ry="5.5" fill="none" stroke="currentColor" stroke-width="1.7"/>
+          <circle cx="12" cy="12" r="4.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+          <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor"/>
+        </svg>
+        <span class="face-label">Watch on Instagram</span>
+      </span>
+      <span class="play" aria-hidden="true"></span>
+    </a>
   )}
+
+  {v.kind === 'link' && (
+    <a class="tile link" href={v.href} target="_blank" rel="noopener" aria-label={`Watch: ${v.title}`}>
+      <span class="face">
+        <span class="face-label">Watch video</span>
+      </span>
+      <span class="play" aria-hidden="true"></span>
+    </a>
+  )}
+
+  {v.kind === 'none' && (
+    <div class="tile soon" aria-hidden="true"><span>Coming soon</span></div>
+  )}
+
   <p class="caption">
-    {v.kind === 'link'
-      ? <a href={v.href} target="_blank" rel="noopener">{v.title} →</a>
-      : <span>{v.title}</span>}
-    {v.kind === 'none' && <span class="soon"> {v.note ? `(${v.note})` : '(coming soon)'}</span>}
+    <span>{v.title}</span>
+    {v.kind === 'none' && <span class="note"> {v.note ? `(${v.note})` : '(coming soon)'}</span>}
   </p>
 </div>
 
 <style>
-  .embed {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%;
-    background: #1e1a16;
-    border-radius: 4px;
-    overflow: hidden;
+  .video-item {
+    display: flex;
+    flex-direction: column;
   }
-  .embed iframe {
+
+  .tile {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #1e1a16;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 1px 4px rgba(30, 26, 22, 0.28);
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .tile:hover {
+    box-shadow: 0 4px 14px rgba(30, 26, 22, 0.38);
+    transform: translateY(-2px);
+  }
+  .tile:focus-visible {
+    outline: 3px solid #e8c97e;
+    outline-offset: 2px;
+  }
+
+  .thumb {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    border: 0;
+    object-fit: cover;
+    display: block;
   }
-  .instagram-media {
-    margin: 0 auto !important;
+
+  /* Play button overlay (shared by all tile types) */
+  .play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(30, 26, 22, 0.68);
+    border: 2px solid #e8c97e;
+    display: grid;
+    place-items: center;
+    transition: background 0.15s, transform 0.15s;
   }
+  .play::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 9px 0 9px 15px;
+    border-color: transparent transparent transparent #e8c97e;
+    margin-left: 3px;
+  }
+  .tile:hover .play {
+    background: rgba(30, 26, 22, 0.85);
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+
+  /* Placeholder face for Instagram / other-link tiles */
+  .face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #2a2420 0%, #3a2e22 100%);
+    color: #e8c97e;
+  }
+  .ig-glyph {
+    width: 30px;
+    height: 30px;
+  }
+  .face-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #d8c39a;
+    opacity: 0.9;
+    padding: 0 0.5rem;
+    text-align: center;
+  }
+  /* keep the label clear of the centered play button */
+  .ig .face { padding-bottom: 0; }
+  .ig .face-label { transform: translateY(34px); }
+  .link .face-label { transform: translateY(34px); }
+
+  .soon {
+    cursor: default;
+    display: grid;
+    place-items: center;
+    color: #8a7a66;
+    font-style: italic;
+    box-shadow: none;
+    background: #ece3d3;
+    border: 1px dashed #d4c4a0;
+  }
+  .soon:hover { transform: none; box-shadow: none; }
+
   .caption {
     margin-top: 0.5rem;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
+    line-height: 1.4;
   }
-  .caption .soon {
+  .caption .note {
     color: #8a7a66;
     font-style: italic;
   }
