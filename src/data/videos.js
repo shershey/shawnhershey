@@ -50,6 +50,7 @@ export default {
     { title: 'bluesSHOUT! 2017 All Stars Mix & Match finals', url: 'https://youtu.be/JpTHQ_-GAkQ?t=166' },
     { title: '2nd place — bluesSHOUT! 2015 All-Star Mix & Match finals', url: 'https://youtu.be/ZBd9ZY6Ksr4?t=597' },
     { title: 'bluesSHOUT! 2014 All Stars J&J finals spotlight — Laney Barhaugh & Shawn Hershey', url: 'https://www.youtube.com/watch?v=qmy7XzsqQz0' },
+    { title: '1st place — Slow Jam, Snowball 2019', url: 'https://youtu.be/QxlfnZ8nayo?t=21' },
   ],
     'Pure Balboa': [
     { title: 'Pure Bal finals — Cal Bal 2026',            url: 'https://www.instagram.com/reel/DUlajakgWSl/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', note: 'on Instagram' },
