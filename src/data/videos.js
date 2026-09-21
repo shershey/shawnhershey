@@ -43,14 +43,17 @@ export default {
     // Add blues videos here, e.g.:
     { title: '1st place - Snowball Invitational Blues 2026', url: 'https://www.instagram.com/reel/DTyU8GdCLgu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==' },
     { title: 'Korea Blues Camp 2024 Instructor Improvised Demo', url: 'https://www.youtube.com/watch?v=WYj4hOwuY6g' },
-    { title: '1st place — Slow Dance Soiree 2024', url: 'https://www.instagram.com/reel/C9clmiMOIi_/' },
     { title: 'Julie Brown & Shawn Hershey at bluesSHOUT! 2016', url: 'https://www.youtube.com/watch?v=81OkjpB2cHo' },
     { title: 'Julie Brown & Shawn Hershey demo at Rose City Blues 2015', url: 'https://www.youtube.com/watch?v=rGN16XsA2-E' },
     { title: 'bluesSHOUT! 2017 All Stars Strictly finals', url: 'https://youtu.be/xiNQjgeePU0?t=430' },
     { title: 'bluesSHOUT! 2017 All Stars Mix & Match finals', url: 'https://youtu.be/JpTHQ_-GAkQ?t=166' },
     { title: '2nd place — bluesSHOUT! 2015 All-Star Mix & Match finals', url: 'https://youtu.be/ZBd9ZY6Ksr4?t=597' },
     { title: 'bluesSHOUT! 2014 All Stars J&J finals spotlight — Laney Barhaugh & Shawn Hershey', url: 'https://www.youtube.com/watch?v=qmy7XzsqQz0' },
+  ],
+
+  'Slow Dance Competitions': [
     { title: '1st place — Slow Jam, Snowball 2019', url: 'https://youtu.be/QxlfnZ8nayo?t=21' },
+    { title: '1st place — Slow Dance Soiree 2024', url: 'https://www.instagram.com/reel/C9clmiMOIi_/' },
   ],
     'Pure Balboa': [
     { title: 'Pure Bal finals — Cal Bal 2026',            url: 'https://www.instagram.com/reel/DUlajakgWSl/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', note: 'on Instagram' },
