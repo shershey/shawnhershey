@@ -35,13 +35,20 @@ const v = resolve(video);
       data-start={v.start}
       aria-label={`Play: ${v.title}`}
     >
-      <img
-        class="thumb"
-        src={`https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`}
-        onerror={`this.onerror=null;this.src='https://i.ytimg.com/vi/${v.id}/hqdefault.jpg'`}
-        alt=""
-        loading="lazy"
-      />
+      {v.thumb ? (
+        <span class="thumb-fill">
+          <span class="thumb-bg" style={`background-image:url('${v.thumb}')`}></span>
+          <img class="thumb-img" src={v.thumb} alt="" loading="lazy" />
+        </span>
+      ) : (
+        <img
+          class="thumb"
+          src={`https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`}
+          onerror={`this.onerror=null;this.src='https://i.ytimg.com/vi/${v.id}/hqdefault.jpg'`}
+          alt=""
+          loading="lazy"
+        />
+      )}
       <span class="play" aria-hidden="true"></span>
     </button>
   )}
