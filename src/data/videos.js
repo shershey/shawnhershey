@@ -27,7 +27,7 @@ export default {
     { title: '3rd place — Cal Bal 2023',                                     url: 'https://www.youtube.com/watch?v=4etcIvxKANk' },
     { title: '1st place — Bal Love Strictly with Theresa, 2019',             url: 'https://youtu.be/IhKzMboc30k?t=224' },
     { title: 'Social Dance Demo at Camp California Weekend in Beijing 2026',  url: 'https://www.instagram.com/reel/DdY0l8NxZnJ/', thumb: '/images/thumbs/camp-california-beijing-2026.jpg' },
-    { title: 'Strictly finals — Snowball 2025',                             url: 'https://www.instagram.com/reel/DS5TteeDI_6/' },
+    { title: 'Strictly finals — Snowball 2025',                             url: 'https://www.instagram.com/reel/DS5TteeDI_6/', thumb: '/images/thumbs/strictly-snowball-2025.jpg' },
     { title: '1st place — All Balboa Weekend 2017 Amateur, with Yurina Shin', url: 'https://youtu.be/BXnWJzEFc8o?t=841' },
     { title: '1st place — Snowball Mix & Match with Amy, 2019',               url: 'https://youtu.be/dtdhfAXKA9M?t=294' },
     // { title: 'Bal Week 2026 Mix & Match finals',                           url: '' },
@@ -38,14 +38,14 @@ export default {
     { title: '1st place — Slow Bal, Bal Week 2026 - song 1',       url: 'https://www.youtube.com/watch?v=tuUFxIFIg7Y' },
     { title: '1st place — Slow Bal, Bal Week 2026 - song 2',       url: 'https://www.youtube.com/watch?v=H0UV52IkrZk' },
     { title: '1st place — Slow Bal, Bal Week 2026 - song 3',       url: 'https://www.youtube.com/watch?v=IUP7OFAv4xk' },
-    { title: '1st place — Slow Bal, Bal Week 2025',       url: 'https://www.instagram.com/reel/DKX9TfERLvm/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==' },
+    { title: '1st place — Slow Bal, Bal Week 2025',       url: 'https://www.instagram.com/reel/DKX9TfERLvm/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', thumb: '/images/thumbs/slow-bal-bal-week-2025.jpg' },
     { title: '2nd — Slow Bal, Bal Week 2024',             url: 'https://www.youtube.com/watch?v=Qr31lBboN6w' },
     { title: '3rd — Slow Bal, Great Lakes 2019',          url: 'https://youtu.be/3JzPJ_OsZOQ?t=215' },
   ],
 
   'Blues': [
     // Add blues videos here, e.g.:
-    { title: '1st place - Snowball Invitational Blues 2026', url: 'https://www.instagram.com/reel/DTyU8GdCLgu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==' },
+    { title: '1st place - Snowball Invitational Blues 2026', url: 'https://www.instagram.com/reel/DTyU8GdCLgu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', thumb: '/images/thumbs/snowball-invitational-blues-2026.jpg' },
     { title: 'Korea Blues Camp 2024 Instructor Improvised Demo', url: 'https://www.youtube.com/watch?v=WYj4hOwuY6g' },
     { title: 'Julie Brown & Shawn Hershey at bluesSHOUT! 2016', url: 'https://www.youtube.com/watch?v=81OkjpB2cHo' },
     { title: 'Julie Brown & Shawn Hershey demo at Rose City Blues 2015', url: 'https://www.youtube.com/watch?v=rGN16XsA2-E' },
@@ -60,8 +60,8 @@ export default {
     { title: '1st place — Slow Dance Soiree 2024', url: 'https://www.instagram.com/reel/C9clmiMOIi_/' },
   ],
     'Pure Balboa': [
-    { title: 'Pure Bal finals — Cal Bal 2026',            url: 'https://www.instagram.com/reel/DUlajakgWSl/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', note: 'on Instagram' },
-    { title: 'Pure Bal finals — Great Lakes 2025',        url: 'https://www.youtube.com/watch?v=O4qUkmsAKmg' },
+    { title: 'Pure Bal finals — Cal Bal 2026',            url: 'https://www.instagram.com/reel/DUlajakgWSl/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', thumb: '/images/thumbs/pure-bal-cal-bal-2026.jpg' },
+    { title: 'Pure Bal finals — Great Lakes 2025',        url: 'https://www.youtube.com/watch?v=O4qUkmsAKmg', thumb: '/images/thumbs/pure-bal-great-lakes-2025.jpg' },
   ],
 
 };
