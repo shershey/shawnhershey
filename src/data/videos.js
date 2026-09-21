@@ -13,9 +13,8 @@
 //     optionally add a note. An empty category shows "coming soon".
 //   • Instagram videos show a plain "Watch on Instagram" card by default.
 //     To give one a real thumbnail, drop an image in public/images/thumbs/
-//     and add  thumb: '/images/thumbs/your-file.jpg'  to that entry.
-//     Optionally add  thumbPos: '50% 25%'  to nudge which part of a tall
-//     photo shows in the wide tile (x% y%; lower y% = show higher up).
+//     and add  thumb: '/images/thumbs/your-file.jpg'  to that entry. The whole
+//     photo is shown (never cropped); a blurred copy fills the wide tile behind it.
 //   • To reorder the CATEGORIES, reorder the blocks below.
 // ─────────────────────────────────────────────────────────────────────────
 
@@ -27,7 +26,7 @@ export default {
     { title: 'Bal Week 2026 Rendezvous finals',                            url: 'https://www.instagram.com/reel/DZybxzMxX-j/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==' },
     { title: '3rd place — Cal Bal 2023',                                     url: 'https://www.youtube.com/watch?v=4etcIvxKANk' },
     { title: '1st place — Bal Love Strictly with Theresa, 2019',             url: 'https://youtu.be/IhKzMboc30k?t=224' },
-    { title: 'Social Dance Demo at Camp California Weekend in Beijing 2026',  url: 'https://www.instagram.com/reel/DdY0l8NxZnJ/', thumb: '/images/thumbs/camp-california-beijing-2026.jpg', thumbPos: '50% 22%' },
+    { title: 'Social Dance Demo at Camp California Weekend in Beijing 2026',  url: 'https://www.instagram.com/reel/DdY0l8NxZnJ/', thumb: '/images/thumbs/camp-california-beijing-2026.jpg' },
     { title: 'Strictly finals — Snowball 2025',                             url: 'https://www.instagram.com/reel/DS5TteeDI_6/' },
     { title: '1st place — All Balboa Weekend 2017 Amateur, with Yurina Shin', url: 'https://youtu.be/BXnWJzEFc8o?t=841' },
     { title: '1st place — Snowball Mix & Match with Amy, 2019',               url: 'https://youtu.be/dtdhfAXKA9M?t=294' },
