@@ -93,6 +93,11 @@ const galleryUrl = 'https://www.dropbox.com/scl/fo/79xxnbv8s78ga2o115vyh/ANTD2VK
       border-radius: 4px;
       box-shadow: 0 2px 10px rgba(30, 26, 22, 0.25);
     }
+    /* Keep the section-heading underline from running across the floated
+       headshot: a BFC shrinks the heading to the text column beside it. */
+    h2 {
+      display: flow-root;
+    }
     @media (max-width: 480px) {
       .headshot {
         float: none;
