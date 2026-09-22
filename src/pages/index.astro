@@ -9,6 +9,25 @@ const featured = {
   youtubeId: 'ouRiBgvzBeI',
   caption: '1st place — Open Mix & Match, Cal Bal 2026',
 };
+
+// The Fried Bananas albums (Bandcamp). Player colors are tuned to this
+// site's cream/brown palette. Full tracklists + downloads live on the
+// band's own site, thefriedbananas.com.
+const albums = [
+  {
+    id: '3311730543',
+    title: 'Live at Montreal Dance Fest & Sweet Molasses Blues',
+    year: '2014',
+    url: 'https://shawnhershey.bandcamp.com/album/the-fried-bananas-live-at-montreal-dance-fest-sweet-molasses-blues',
+  },
+  {
+    id: '234184643',
+    title: 'Live at the 2014 Albany Lindy and Blues Exchange',
+    year: '2015',
+    url: 'https://shawnhershey.bandcamp.com/album/the-fried-bananas',
+  },
+];
+const bcParams = 'size=large/bgcol=f7f2ea/linkcol=7a4f1e/tracklist=false/transparent=true';
 ---
 <Layout>
   <Content />
@@ -26,6 +45,25 @@ const featured = {
     </div>
     <p class="caption">{featured.caption}</p>
     <p class="more"><a href="/videos">See more videos &rarr;</a></p>
+  </section>
+
+  <section class="listen">
+    <h2>Listen</h2>
+    <p class="lead">With <strong>The Fried Bananas</strong>, my blues &amp; swing band &mdash; live off the bandstand.</p>
+    <div class="albums">
+      {albums.map((a) => (
+        <div class="album">
+          <iframe
+            src={`https://bandcamp.com/EmbeddedPlayer/album=${a.id}/${bcParams}/`}
+            title={a.title}
+            loading="lazy"
+            seamless
+          ><a href={a.url}>{a.title}</a></iframe>
+          <p class="album-title">{a.title}<span class="yr"> &middot; {a.year}</span></p>
+        </div>
+      ))}
+    </div>
+    <p class="more"><a href="https://thefriedbananas.com" target="_blank" rel="noopener">Hear the full band at thefriedbananas.com &rarr;</a></p>
   </section>
 
   <style>
@@ -53,6 +91,37 @@ const featured = {
     }
     .more {
       margin-top: 0.35rem;
+    }
+
+    .listen {
+      margin-top: 2.75rem;
+    }
+    .listen .lead {
+      margin-top: 0;
+      color: #5a4a36;
+    }
+    .albums {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.25rem;
+    }
+    .album iframe {
+      width: 100%;
+      height: 340px;
+      border: 0;
+      border-radius: 6px;
+      box-shadow: 0 3px 14px rgba(30, 26, 22, 0.2);
+    }
+    .album-title {
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #5a3e1b;
+    }
+    .album-title .yr {
+      font-weight: 400;
+      color: #8a7a66;
     }
   </style>
 </Layout>
