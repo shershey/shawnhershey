@@ -6,8 +6,8 @@ import { Content } from '../content/home.md';
 // To feature a different clip, change the YouTube id and caption below
 // (the id is the v=... part of a youtube.com/watch URL).
 const featured = {
-  youtubeId: 'ouRiBgvzBeI',
-  caption: '1st place — Open Mix & Match, Cal Bal 2026',
+  youtubeId: 'K1UwFi6Lnq4',
+  caption: 'Teacher Demo at Policoro in Swing 2026',
 };
 
 // The Fried Bananas albums (Bandcamp). Player colors are tuned to this
@@ -30,7 +30,9 @@ const albums = [
 const bcParams = 'size=large/bgcol=f7f2ea/linkcol=7a4f1e/tracklist=false/transparent=true';
 ---
 <Layout>
-  <Content />
+  <div class="intro">
+    <Content />
+  </div>
 
   <section class="featured">
     <h2>Watch</h2>
@@ -67,6 +69,19 @@ const bcParams = 'size=large/bgcol=f7f2ea/linkcol=7a4f1e/tracklist=false/transpa
   </section>
 
   <style>
+    /* Homepage intro "lede" — larger, warmer than body copy.
+       Scoped to this page; targets the paragraph rendered from home.md. */
+    .intro :global(p) {
+      font-size: 1.35rem;
+      line-height: 1.55;
+      color: #5a4a36;
+      max-width: 34rem;
+      margin-top: 1rem;
+    }
+    .intro :global(p a) {
+      color: #7a4f1e;
+    }
+
     .featured {
       margin-top: 2.5rem;
     }
