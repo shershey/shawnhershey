@@ -1,5 +1,8 @@
 ---
 const { title } = Astro.props;
+// On the homepage the hero shows the name, so the header brand would
+// duplicate it — hide it there and let the nav sit on its own.
+const isHome = Astro.url.pathname === '/';
 ---
 <html lang="en">
   <head>
@@ -31,6 +34,8 @@ const { title } = Astro.props;
         flex-wrap: wrap;
         gap: 0.75rem;
       }
+
+      header.home { justify-content: flex-end; }
 
       header a.site-name {
         font-family: 'Playfair Display', Georgia, serif;
@@ -125,8 +130,8 @@ const { title } = Astro.props;
     </style>
   </head>
   <body>
-    <header>
-      <a href="/" class="site-name">Shawn Hershey</a>
+    <header class:list={[isHome && 'home']}>
+      {!isHome && <a href="/" class="site-name">Shawn Hershey</a>}
       <nav>
         <a href="/">Home</a>
         <a href="/bio">Bios &amp; Photos</a>
