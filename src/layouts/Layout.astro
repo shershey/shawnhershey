@@ -12,16 +12,41 @@ const isHome = Astro.url.pathname === '/';
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
-    <style>
+    <style is:global>
+      /* Design tokens — single source of truth for the vintage palette.
+         Muted/eyebrow tones are chosen to clear WCAG AA on the cream ground. */
+      :root {
+        --cream: #f7f2ea;
+        --ink: #1e1a16;
+        --gold: #e8c97e;      /* decorative gold accent */
+        --gold-ink: #94631f;  /* gold-brown for small text (AA on cream) */
+        --brown: #7a4f1e;     /* links */
+        --brown-dark: #5a3e1b;
+        --brown-soft: #5a4a36;
+        --muted: #6f5c43;     /* secondary text (AA on cream) */
+        --rule: #d4c4a0;
+      }
+
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
       body {
-        background: #f7f2ea;
-        color: #1e1a16;
+        background: var(--cream);
+        color: var(--ink);
         font-family: 'Source Sans 3', Georgia, sans-serif;
         font-size: 1.05rem;
         line-height: 1.6;
         min-height: 100vh;
+      }
+
+      /* Warm paper vignette behind every page (site-wide consistency). */
+      .page-bg {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background:
+          radial-gradient(120% 80% at 50% 0%, rgba(255, 255, 255, 0.55) 0%, rgba(247, 242, 234, 0) 55%),
+          radial-gradient(140% 120% at 100% 100%, rgba(122, 79, 30, 0.06) 0%, rgba(247, 242, 234, 0) 50%);
       }
 
       header {
@@ -68,32 +93,57 @@ const isHome = Astro.url.pathname === '/';
         padding: 2.5rem 1.5rem 4rem;
       }
 
+      /* Page title — Playfair with a short gold accent rule beneath,
+         a lighter echo of the homepage hero's gold bar. */
       h1 {
         font-family: 'Playfair Display', Georgia, serif;
         font-size: 2.25rem;
-        color: #1e1a16;
-        margin-bottom: 1.5rem;
+        color: var(--ink);
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.55rem;
         line-height: 1.2;
+        position: relative;
+      }
+      h1::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 3rem;
+        height: 3px;
+        background: var(--gold);
+        border-radius: 2px;
       }
 
+      /* Section heading — thin rule with a gold accent segment. */
       h2 {
         font-family: 'Playfair Display', Georgia, serif;
-        font-size: 1.35rem;
-        color: #5a3e1b;
-        margin: 2rem 0 0.75rem;
-        padding-bottom: 0.35rem;
-        border-bottom: 1px solid #d4c4a0;
+        font-size: 1.4rem;
+        color: var(--brown-dark);
+        margin: 2rem 0 0.9rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid var(--rule);
+        position: relative;
+      }
+      h2::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 2.5rem;
+        height: 2px;
+        background: var(--gold);
       }
 
       p { margin-top: 0.75rem; }
 
       a {
-        color: #7a4f1e;
+        color: var(--brown);
         text-decoration: underline;
         text-underline-offset: 2px;
       }
 
-      a:hover { color: #5a3e1b; }
+      a:hover { color: var(--brown-dark); }
 
       blockquote {
         border-left: 3px solid #d4c4a0;
@@ -107,8 +157,8 @@ const isHome = Astro.url.pathname === '/';
         text-align: center;
         padding: 2rem 1rem;
         font-size: 0.85rem;
-        color: #8a7a66;
-        border-top: 1px solid #d4c4a0;
+        color: var(--muted);
+        border-top: 1px solid var(--rule);
       }
 
       footer .social {
@@ -119,7 +169,7 @@ const isHome = Astro.url.pathname === '/';
       }
 
       footer .social a {
-        color: #8a7a66;
+        color: var(--muted);
         display: inline-flex;
         transition: color 0.15s;
       }
@@ -130,6 +180,7 @@ const isHome = Astro.url.pathname === '/';
     </style>
   </head>
   <body>
+    <div class="page-bg" aria-hidden="true"></div>
     <header class:list={[isHome && 'home']}>
       {!isHome && <a href="/" class="site-name">Shawn Hershey</a>}
       <nav>
