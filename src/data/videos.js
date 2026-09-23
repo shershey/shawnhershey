@@ -57,7 +57,7 @@ export default {
 
   'Slow Dance Competitions': [
     { title: '1st place — Slow Jam, Snowball 2019', url: 'https://youtu.be/QxlfnZ8nayo?t=21' },
-    { title: '1st place — Slow Dance Soiree 2024', url: 'https://www.instagram.com/reel/C9clmiMOIi_/' },
+    { title: '1st place — Slow Dance Soiree 2024', url: 'https://www.instagram.com/reel/C9clmiMOIi_/', thumb: '/images/thumbs/slow-dance-soiree-2024.jpg' },
   ],
     'Pure Balboa': [
     { title: 'Pure Bal finals — Cal Bal 2026',            url: 'https://www.instagram.com/reel/DUlajakgWSl/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', thumb: '/images/thumbs/pure-bal-cal-bal-2026.jpg' },
