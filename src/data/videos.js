@@ -24,6 +24,7 @@ export default {
     { title: 'Teacher Demo at Policoro in Swing 2026',                       url: 'https://www.youtube.com/watch?v=K1UwFi6Lnq4' },
     { title: '1st place — Open Mix & Match, Cal Bal 2026',                    url: 'https://www.youtube.com/watch?v=ouRiBgvzBeI' },
     { title: 'Bal Week 2026 Rendezvous finals',                            url: 'https://www.instagram.com/reel/DZybxzMxX-j/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', thumb: '/images/thumbs/bal-week-rendezvous-2026.jpg' },
+    { title: 'Teacher Demo for Hong Kong Balboa, Sept 2026',                url: 'https://www.instagram.com/reel/DdoCpgRRov7/', thumb: '/images/thumbs/hong-kong-balboa-2026.jpg' },
     { title: '3rd place — Cal Bal 2023',                                     url: 'https://www.youtube.com/watch?v=4etcIvxKANk' },
     { title: '1st place — Bal Love Strictly with Theresa, 2019',             url: 'https://youtu.be/IhKzMboc30k?t=224' },
     { title: 'Social Dance Demo at Camp California Weekend in Beijing 2026',  url: 'https://www.instagram.com/reel/DdY0l8NxZnJ/', thumb: '/images/thumbs/camp-california-beijing-2026.jpg' },
