@@ -40,6 +40,7 @@ export default {
     { title: '1st place — Slow Bal, Bal Week 2026 - song 2',       url: 'https://www.youtube.com/watch?v=H0UV52IkrZk' },
     { title: '1st place — Slow Bal, Bal Week 2026 - song 3',       url: 'https://www.youtube.com/watch?v=IUP7OFAv4xk' },
     { title: '1st place — Slow Bal, Bal Week 2025',       url: 'https://www.instagram.com/reel/DKX9TfERLvm/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', thumb: '/images/thumbs/slow-bal-bal-week-2025.jpg' },
+    { title: 'Teacher slow balboa demo with Denise Lwin, Hong Kong 2026', url: 'https://www.instagram.com/reel/DdsgpGVxSNg/' },
     { title: '2nd — Slow Bal, Bal Week 2024',             url: 'https://www.youtube.com/watch?v=Qr31lBboN6w' },
     { title: '3rd — Slow Bal, Great Lakes 2019',          url: 'https://youtu.be/3JzPJ_OsZOQ?t=215' },
   ],
