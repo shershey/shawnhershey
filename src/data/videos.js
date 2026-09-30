@@ -47,6 +47,7 @@ export default {
   'Blues': [
     // Add blues videos here, e.g.:
     { title: '1st place - Snowball Invitational Blues 2026', url: 'https://www.instagram.com/reel/DTyU8GdCLgu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', thumb: '/images/thumbs/snowball-invitational-blues-2026.jpg' },
+    { title: "Jeep's Blues performance with the B-Sides at bluesSHOUT! 2019", url: 'https://www.youtube.com/watch?v=bzomjg4O8HY' },
     { title: 'Korea Blues Camp 2024 Instructor Improvised Demo', url: 'https://www.youtube.com/watch?v=WYj4hOwuY6g' },
     { title: 'Julie Brown & Shawn Hershey at bluesSHOUT! 2016', url: 'https://www.youtube.com/watch?v=81OkjpB2cHo' },
     { title: 'Julie Brown & Shawn Hershey demo at Rose City Blues 2015', url: 'https://www.youtube.com/watch?v=rGN16XsA2-E' },
