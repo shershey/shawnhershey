@@ -37,6 +37,8 @@ export default {
   ],
 
   'Slow Balboa': [
+    { title: 'Teacher Demo at Slow Bal Love 2027 with Jen Barnett', url: 'https://www.instagram.com/reel/DfFUmrBN72x/' },
+    { title: 'Pure Bal Slow Bal All Skate at Shanghai Balboa Weekend 2027 with Olivia Hales Adams', url: 'https://www.instagram.com/reel/DehRcc5gukK/' },
     { title: '1st place — Slow Bal at Stardust 2025',     url: 'https://youtu.be/Mvht_KYqRD4?si=5CvJVApq5tfGwlO9&t=409' },
     { title: '1st place — Slow Bal, Bal Week 2026 - song 1',       url: 'https://www.youtube.com/watch?v=tuUFxIFIg7Y' },
     { title: '1st place — Slow Bal, Bal Week 2026 - song 2',       url: 'https://www.youtube.com/watch?v=H0UV52IkrZk' },
