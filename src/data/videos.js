@@ -88,3 +88,29 @@ export default {
   ],
 
 };
+
+// FOLLOW LINKS — maps a follow's exact name (as written after "· with" in a
+// title) to their page. Any matching name in a title is auto-linked on the
+// page. One entry per person; reused across all their videos. Add new follows
+// here when you add a video with a new partner.
+export const follows = {
+  'Olivia Hales Adams': 'https://www.instagram.com/olivia_rose_goes/',
+  'Yurina Shin':        'https://www.instagram.com/yurina.shin/',
+  'Natalia Eristavi':   'https://www.instagram.com/nataeristavi/',
+  'Theresa Manney':     'https://www.instagram.com/theresa.manney/',
+  'Hannah Manning':     'https://www.instagram.com/hannahm.swing/',
+  'Delphine Laurens':   'https://www.instagram.com/swingdelii/',
+  'Denise Wei Wei Lwin':'https://www.instagram.com/swinglikelwin/',
+  'Miyabi Hong':        'https://www.instagram.com/swing_miyabi/',
+  'Amy Lu':             'https://www.instagram.com/amyalexswing/',
+  'Jen Barnett':        'https://rockininrhythm.com/',
+  'Jessica White':      'https://www.instagram.com/jessicamiltenberger/',
+  'Jenn Lee':           'https://therealjenniferlee.com/',
+  'Vicci Moore':        'https://www.instagram.com/viccimoore/',
+  'Flouer Evelyn':      'https://flouerdances.com/',
+  'Julie Brown':        'https://www.julie-brown-blues-dance.com/',
+  'Rachel Stirling':    'https://www.instagram.com/rcs121/',
+  'Campbell Miller':    'https://www.instagram.com/campbell_miller_/',
+  'Laney Barhaugh':     'https://www.instagram.com/laneybarhaugh/',
+  'Idalia Somar':       'https://www.instagram.com/idaliaist/',
+};
