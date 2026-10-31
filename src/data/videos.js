@@ -1,21 +1,36 @@
 // ─────────────────────────────────────────────────────────────────────────
 // VIDEOS  —  edit this file to add / remove / reorder videos.
 //
-//   • Videos are grouped into categories (the headings on the page).
-//   • Within each category, the FIRST video is the one shown by default;
-//     the rest appear under "Show more". To feature a different video,
-//     move it to the top of its category.
-//   • To ADD a video: copy a line, paste a title and the video link.
-//     YouTube and Instagram links embed and play inline (YouTube start
-//     times like ...?t=841 are kept). Other links (e.g. Facebook) show as
-//     a clickable link instead. Instagram only embeds for public accounts.
+//   • Videos are grouped into categories (the headings on the page). Every
+//     video in a category shows as a uniform tile in a grid — the order here
+//     is the order on the page (first entry = top-left). No "show more".
+//   • To ADD a video: copy a line, set its title and url. Clicking a YouTube
+//     tile opens an inline player (start times like ...?t=841 are kept);
+//     an Instagram tile opens the reel on Instagram; any other link opens in
+//     a new tab. Instagram works only for public accounts.
 //   • For a video that isn't posted yet, leave the link empty ('') and
 //     optionally add a note. An empty category shows "coming soon".
 //   • Instagram videos show a plain "Watch on Instagram" card by default.
 //     To give one a real thumbnail, drop an image in public/images/thumbs/
 //     and add  thumb: '/images/thumbs/your-file.jpg'  to that entry. The whole
 //     photo is shown (never cropped); a blurred copy fills the wide tile behind it.
+//     Prefer JPEG (far smaller than PNG screenshots) to keep the page light.
 //   • To reorder the CATEGORIES, reorder the blocks below.
+//
+//   • TITLE FORMAT — keep every title consistent:
+//       Competition:   {Placement} — {Event} {Year}, {Division} · with {Follow}
+//       Demo / show:    {Teacher demo | Instructor demo | Social dance demo |
+//                        Demo | Performance} — {Event} {Year}[, {Division}] · with {Follow}
+//     - Include {Placement} ('1st place', '2nd place', …) ONLY when a placement
+//       was earned; otherwise start with the event (or the demo/show type).
+//     - The category is the section heading — never repeat it in the title.
+//     - Name the dance partner after ' · with '. Drop that clause only when it's
+//       solo or a band act (name the band in the title instead).
+//     - Separators: ' · ' before the follow; an em dash ' — ' after the
+//       placement or the demo/show type. Examples:
+//         1st place — Cal Bal 2026, Open Mix & Match · with Hannah Manning
+//         Teacher demo — Policoro in Swing 2026 · with Natalia Eristavi
+//         Snowball 2025, Strictly finals · with Olivia Hales Adams
 // ─────────────────────────────────────────────────────────────────────────
 
 export default {
