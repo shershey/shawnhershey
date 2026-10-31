@@ -52,8 +52,8 @@ export default {
   ],
 
   'Slow Balboa': [
-    { title: 'Teacher demo — Slow Bal Love 2026 · with Jen Barnett', url: 'https://www.instagram.com/reel/DfFUmrBN72x/' },
-    { title: 'Pure Bal / Slow Bal all-skate — Shanghai Balboa Weekend 2026 · with Olivia Hales Adams', url: 'https://www.instagram.com/reel/DehRcc5gukK/' },
+    { title: 'Teacher demo — Slow Bal Love 2026 · with Jen Barnett', url: 'https://www.instagram.com/reel/DfFUmrBN72x/', thumb: '/images/thumbs/slow-bal-love-2026.jpg' },
+    { title: 'Pure Bal / Slow Bal all-skate — Shanghai Balboa Weekend 2026 · with Olivia Hales Adams', url: 'https://www.instagram.com/reel/DehRcc5gukK/', thumb: '/images/thumbs/shanghai-slow-pure-all-skate-2026.jpg' },
     { title: '1st place — Stardust 2025, Slow Bal · with Jen Barnett',     url: 'https://youtu.be/Mvht_KYqRD4?si=5CvJVApq5tfGwlO9&t=409' },
     { title: '1st place — Bal Week 2026, Slow Bal (song 1) · with Theresa Manney',       url: 'https://www.youtube.com/watch?v=tuUFxIFIg7Y' },
     { title: '1st place — Bal Week 2026, Slow Bal (song 2) · with Theresa Manney',       url: 'https://www.youtube.com/watch?v=H0UV52IkrZk' },
