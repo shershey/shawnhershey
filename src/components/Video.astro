@@ -1,4 +1,5 @@
 ---
+import { follows } from '../data/videos.js';
 const { video } = Astro.props;
 
 // Work out how to show a video from its link.
@@ -25,6 +26,13 @@ function resolve(v) {
 }
 
 const v = resolve(video);
+
+// Split the title so a known follow name (after " · with ") can be linked.
+const sep = ' · with ';
+const sepAt = v.title.indexOf(sep);
+const titleBefore = sepAt === -1 ? v.title : v.title.slice(0, sepAt + sep.length);
+const followName = sepAt === -1 ? null : v.title.slice(sepAt + sep.length);
+const followUrl = followName ? follows[followName] : null;
 ---
 <div class="video-item">
   {v.kind === 'youtube' && (
@@ -88,7 +96,11 @@ const v = resolve(video);
   )}
 
   <p class="caption">
-    <span>{v.title}</span>
+    <span>{titleBefore}{followName && (
+      followUrl
+        ? <a class="follow" href={followUrl} target="_blank" rel="noopener">{followName}</a>
+        : followName
+    )}</span>
     {v.kind === 'none' && <span class="note"> {v.note ? `(${v.note})` : '(coming soon)'}</span>}
   </p>
 </div>
